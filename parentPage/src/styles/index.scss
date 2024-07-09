@@ -1,0 +1,31 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.unified-container {
+    width: 100%;
+    height: 100vh;
+    .aside-box {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: width 0.3s ease;
+        border-right: 1px solid #e6e6e6;
+        background-color: #fff;
+    }
+    .ep-menu {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        border-right: none;
+    }
+    .ep-menu-item {
+        cursor: pointer;
+    }
+
+    .ep-main {
+        padding: 0 !important;
+        overflow: hidden;
+    }
+}
