@@ -1,0 +1,100 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "path": "/home",
+            "name": "home",
+            "component": "/home/index",
+            "meta": {
+                "icon": "HomeFilled",
+                "title": "首页",
+                "isLink": "",
+                "isHide": false,
+                "isFull": false,
+                "isAffix": false,
+                "isKeepAlive": true,
+                "isTab": true
+            }
+        },
+        {
+            "path": "/dataMonitor",
+            "name": "dataMonitor",
+            "component": "/dataMonitor/index",
+            "meta": {
+                "icon": "Histogram",
+                "title": "数据监听",
+                "isLink": "",
+                "isHide": false,
+                "isFull": false,
+                "isAffix": false,
+                "isKeepAlive": true,
+                "isTab": true
+            },
+            "children": [
+                {
+                    "path": "/dataMonitor/details",
+                    "name": "hotspotDetails",
+                    "component": "/dataMonitor/modules/TopDetails",
+                    "meta": {
+                        "icon": "Histogram",
+                        "title": "TOP详情",
+                        "activeMenu": "/dataMonitor",
+                        "isLink": "",
+                        "isHide": true,
+                        "isFull": false,
+                        "isAffix": false,
+                        "isKeepAlive": false,
+                        "isTab": false
+                    }
+                }
+            ]
+        },
+
+        {
+            "path": "/hotConfig",
+            "name": "hotConfig",
+            "component": "/hotConfig/index",
+            "meta": {
+                "icon": "Odometer",
+                "title": "热点配置",
+                "isLink": "",
+                "isHide": false,
+                "isFull": false,
+                "isAffix": false,
+                "isKeepAlive": true,
+                "isTab": true
+            }
+        },
+        {
+            "path": "/hotWhite",
+            "name": "hotWhite",
+            "component": "/hotWhite/index",
+            "meta": {
+                "icon": "Menu",
+                "title": "白名单",
+                "isLink": "",
+                "isHide": false,
+                "isFull": false,
+                "isAffix": false,
+                "isKeepAlive": true,
+                "isTab": true
+            }
+        },
+        {
+            "path": "/hotHistory",
+            "name": "hotHistory",
+            "component": "/hotHistory/index",
+            "meta": {
+                "icon": "Tickets",
+                "title": "历史数据",
+                "isLink": "",
+                "isHide": false,
+                "isFull": false,
+                "isAffix": false,
+                "isKeepAlive": true,
+                "isTab": true
+            }
+        }
+    ],
+    "msg": "成功"
+}
