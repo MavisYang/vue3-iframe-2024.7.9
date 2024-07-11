@@ -2,7 +2,7 @@
  * @Author: yangmiaomiao
  * @Date: 2024-07-05 14:37:53
  * @LastEditors: yangmiaomiao
- * @LastEditTime: 2024-07-09 17:23:27
+ * @LastEditTime: 2024-07-11 15:35:47
  * @Description: 
 -->
 <template>
@@ -81,7 +81,10 @@ const changeDialog = (event) => {
             iframeWin.contentWindow.postMessage(
                 {
                     type: 'style-left',
-                    data: isCollapse.value ? '-65px' : '-210px',
+                    data: {
+                        left: isCollapse.value ? '-65px' : '-210px',
+                        dialogModalClass: data.dialogModalClass,
+                    },
                 },
                 '*', //解决iframe跨域问题
             )
