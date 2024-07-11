@@ -121,12 +121,12 @@ const columns = reactive<ColumnProps<any>[]>([
     {
         label: '创建时间',
         prop: 'createTime',
-        render: ({ createTime }) => sliceTime(createTime),
+        render: ({ row }) => sliceTime(row.createTime),
     },
     {
         label: '更新时间',
         prop: 'updateTime',
-        render: ({ updateTime }) => sliceTime(updateTime),
+        render: ({ row }) => sliceTime(row.updateTime),
     },
 ])
 

@@ -31,6 +31,7 @@
             :edit-data="editData.data"
             :on-confirm="handleConfirmAdd"
             :on-cancel="handleCancelAdd"
+            modalClass="hot-history-dialog"
         />
     </div>
 </template>
@@ -83,14 +84,14 @@ const columns = reactive<ColumnProps[]>([
         label: '创建时间',
         prop: 'createTime',
         sortable: true,
-        render: ({ createTime }) => sliceTime(createTime),
+        render: ({ row }) => sliceTime(row.createTime),
     },
     {
         label: '更新时间',
         prop: 'updateTime',
         sortable: true,
         headerRender: () => <span>更新时间</span>,
-        render: ({ updateTime }) => sliceTime(updateTime),
+        render: ({ row }) => sliceTime(row.updateTime),
     },
 ])
 

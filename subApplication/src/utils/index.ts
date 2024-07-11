@@ -397,7 +397,7 @@ export function getEnumItem(data: any = [], val: '', code = 'dictCode') {
  * 截取时间
  */
 export const sliceTime = (time: string) => {
-    return time && time.slice(0, 16).replaceAll('T' || ' ', ' ')
+    return time && time.slice(0, 16).replaceAll('T', ' ')
 }
 
 export const toThousands = (num) => {

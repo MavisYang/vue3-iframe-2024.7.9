@@ -2,7 +2,7 @@
  * @Author: yangmiaomiao
  * @Date: 2024-01-09 19:39:19
  * @LastEditors: yangmiaomiao
- * @LastEditTime: 2024-07-09 16:45:55
+ * @LastEditTime: 2024-07-11 15:01:54
  * @Description: 
 -->
 <template>
@@ -15,8 +15,7 @@
         append-to-body
         @close="handleCancel(ruleFormRef)"
         :width="width"
-        center
-        modal-class="dialog-iframe"
+        :modal-class="modalClass"
     >
         <el-form
             class="demo-dialog-form"
@@ -93,6 +92,7 @@ interface Props {
     onConfirm: (data: any) => void
     visible: boolean
     width?: number | string
+    modalClass?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -105,6 +105,7 @@ const props = withDefaults(defineProps<Props>(), {
     onConfirm: () => {},
     visible: false,
     width: 620,
+    modalClass: '',
 })
 
 //重新定义数据是为了编辑时列表页面数据不修改，解决双向绑定问题
@@ -119,7 +120,7 @@ const handleConfirm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             // console.log("submit!", fields);
             props.onConfirm(formData.value)
-            dialogPostMessage(false) //子页面传值给父页面，记录弹框的visible
+            dialogPostMessage(false, props.modalClass) //子页面传值给父页面，记录弹框的visible
         } else {
             console.log('error submit!', fields)
         }
@@ -130,13 +131,11 @@ const handleCancel = (formEl: FormInstance | undefined) => {
     formEl.resetFields() //重置校验
     formEl.clearValidate() // 清除校验
     props.onCancel()
-    dialogPostMessage(false) //子页面传值给父页面，记录弹框的visible
+    dialogPostMessage(false, props.modalClass) //子页面传值给父页面，记录弹框的visible
 }
 
 onMounted(() => {
-    console.log('onmounted')
-    dialogPostMessage(props.visible) //子页面传值给父页面，记录弹框的visible
-
+    dialogPostMessage(props.visible, props.modalClass) //子页面传值给父页面，记录弹框的visible
     //监听父页面传递的值
     window.addEventListener('message', changeDialogStyle, false)
 })

@@ -7,8 +7,7 @@
         :destroy-on-close="true"
         width="680px"
         @close="handleCancel(ruleFormRef)"
-        center
-        modal-class="dialog-iframe"
+        :modal-class="modalClass"
     >
         <el-form
             ref="ruleFormRef"
@@ -148,6 +147,9 @@ const props = withDefaults(defineProps<Props>(), {
     visible: false,
     type: 'add',
 })
+
+const modalClass = ref('config-add-dialog-iframe')
+
 const formEditInfo = ref(Object.assign({}, props.formData) || {})
 const ruleFormRef = ref<FormInstance>()
 const formList = ref<FormListProps[]>([
@@ -272,7 +274,7 @@ onMounted(() => {
             }
         })
     }
-    dialogPostMessage(props.visible) //子页面传值给父页面，记录弹框的visible
+    dialogPostMessage(props.visible, modalClass.value) //子页面传值给父页面，记录弹框的visible
 
     //监听父页面传递的值
     window.addEventListener('message', changeDialogStyle, false)
@@ -288,7 +290,7 @@ const handleConfirm = async (formEl: FormInstance | undefined) => {
     await formEl.validate((valid, fields) => {
         if (valid) {
             props.onConfirm(formEditInfo.value)
-            dialogPostMessage(false)
+            dialogPostMessage(false, modalClass.value)
         } else {
             console.log('error submit!', fields)
         }
@@ -298,7 +300,7 @@ const handleCancel = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.resetFields()
     props.onCancel()
-    dialogPostMessage(false)
+    dialogPostMessage(false, modalClass.value)
 }
 </script>
 

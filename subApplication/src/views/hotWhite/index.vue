@@ -1,5 +1,5 @@
 <template>
-    <div class="hot-white main-padding" id="hot-white">
+    <div class="hot-white main-padding">
         <SearchForm :search="search" :reset="reset" :columns="columns" :search-param="searchParam" />
 
         <div class="card">
@@ -27,6 +27,7 @@
             :edit-data="editData.data"
             :on-cancel="handleCancelAdd"
             :on-confirm="handleConfirmAdd"
+            modalClass="hot-white-dialog"
         />
     </div>
 </template>
@@ -90,12 +91,12 @@ const columns = reactive<ColumnProps[]>([
     {
         label: '创建时间',
         prop: 'createTime',
-        render: ({ createTime }) => sliceTime(createTime),
+        render: ({ row }) => sliceTime(row.createTime),
     },
     {
         label: '更新时间',
         prop: 'updateTime',
-        render: ({ updateTime }) => sliceTime(updateTime),
+        render: ({ row }) => sliceTime(row.updateTime),
     },
 ])
 const columnsEdit = reactive([

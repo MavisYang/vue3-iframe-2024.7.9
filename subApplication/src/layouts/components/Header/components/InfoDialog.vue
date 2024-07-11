@@ -2,7 +2,7 @@
  * @Author: yangmiaomiao
  * @Date: 2024-03-18 08:45:46
  * @LastEditors: yangmiaomiao
- * @LastEditTime: 2024-07-09 16:48:48
+ * @LastEditTime: 2024-07-11 14:48:32
  * @Description: 
 -->
 <template>
@@ -11,7 +11,7 @@
         title="个人信息"
         width="500px"
         draggable
-        modal-class="dialog-iframe"
+        :modal-class="modalClass"
         :close-on-click-modal="false"
         :close-on-press-escape="false"
         :destroy-on-close="true"
@@ -33,18 +33,19 @@ import { onUnmounted, onMounted, ref } from 'vue'
 import { dialogPostMessage, changeDialogStyle } from '@/utils/postMessage'
 
 const dialogVisible = ref(false)
+const modalClass = ref('info-dialog-iframe')
 
 const closeDialog = () => {
     dialogVisible.value = false
-    dialogPostMessage(false)
+    dialogPostMessage(false, modalClass.value)
 }
 const openDialog = () => {
     dialogVisible.value = true
-    dialogPostMessage(true)
+    dialogPostMessage(true, modalClass.value)
 }
 
 onMounted(() => {
-    dialogPostMessage(dialogVisible.value) //子页面传值给父页面，记录弹框的visible
+    dialogPostMessage(dialogVisible.value, modalClass.value) //子页面传值给父页面，记录弹框的visible
     //监听父页面传递的值
     window.addEventListener('message', changeDialogStyle, false)
 })
